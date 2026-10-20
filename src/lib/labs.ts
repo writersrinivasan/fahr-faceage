@@ -1,0 +1,8 @@
+export const labs = [
+  { href: "/lab/face-scan", emoji: "📸", title: "Live face age scanner", desc: "Use your webcam or a photo. Detect the face, see landmarks, get an apparent-age estimate and your age gap. Runs fully in your browser.", gradient: "from-fuchsia-500 to-rose-500", concept: "Detection → estimation → age gap" },
+  { href: "/lab/pipeline", emoji: "🧠", title: "Pipeline explorer", desc: "Build a synthetic face with ageing sliders and step through MTCNN, cropping, the 128-d embedding and the regression output.", gradient: "from-sky-500 to-indigo-500", concept: "How the CNN pipeline works" },
+  { href: "/lab/survival", emoji: "📉", title: "Survival risk calculator", desc: "Enter a real age and a FaceAge. See the hazard ratio from the published cohorts and how the survival curve shifts.", gradient: "from-emerald-500 to-teal-500", concept: "Hazard ratios per decade" },
+  { href: "/lab/cohort", emoji: "👥", title: "Cohort simulator", desc: "Generate a synthetic cancer cohort, then compare Kaplan–Meier curves and C-index for real age versus FaceAge.", gradient: "from-rose-500 to-orange-500", concept: "Independent prognostic value" },
+  { href: "/lab/challenge", emoji: "🩺", title: "Clinician challenge", desc: "Predict 6-month survival for palliative patients, then see if FaceAge information improves your accuracy.", gradient: "from-amber-500 to-lime-500", concept: "Decision support" },
+  { href: "/lab/bias", emoji: "⚖️", title: "Bias & confounder explorer", desc: "Toggle lighting, make-up, steroids, cachexia and dataset skew to see how estimates and fairness can break.", gradient: "from-slate-600 to-violet-600", concept: "Limitations & ethics" },
+];

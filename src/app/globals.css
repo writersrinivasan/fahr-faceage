@@ -1,26 +1,72 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #fbfaff;
+  --foreground: #1b1530;
+  --muted: #5b5675;
+  --card: #ffffff;
+  --border: #e7e3f5;
+  /* chart tokens (validated categorical palette, light) */
+  --series-1: #2a78d6;
+  --series-2: #eb6834;
+  --series-3: #1baf7a;
+  --series-4: #eda100;
+  --grid: #ece9f5;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --color-muted: var(--muted);
+  --color-card: var(--card);
+  --color-line: var(--border);
+  --font-sans: var(--font-jakarta);
+  --font-display: var(--font-space);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+html { scroll-behavior: smooth; }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-jakarta), system-ui, sans-serif;
 }
+
+.text-gradient {
+  background: linear-gradient(90deg, #7c3aed, #db2777 45%, #f59e0b);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.bg-mesh {
+  background:
+    radial-gradient(40rem 30rem at 10% -10%, #c4b5fd55, transparent 60%),
+    radial-gradient(35rem 25rem at 90% 0%, #f9a8d455, transparent 60%),
+    radial-gradient(30rem 25rem at 50% 110%, #67e8f944, transparent 60%);
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 1.25rem;
+  box-shadow: 0 1px 2px #1b153008, 0 8px 24px -12px #1b153020;
+}
+
+.prose-fa p { margin: 0.75rem 0; line-height: 1.75; color: #2d2748; }
+.prose-fa ul { margin: 0.75rem 0; padding-left: 1.25rem; list-style: disc; }
+.prose-fa li { margin: 0.35rem 0; line-height: 1.65; color: #2d2748; }
+.prose-fa strong { color: var(--foreground); }
+
+input[type="range"] { accent-color: #7c3aed; width: 100%; }
+
+@keyframes floaty { 0%,100% { transform: translateY(0) } 50% { transform: translateY(-8px) } }
+.animate-floaty { animation: floaty 6s ease-in-out infinite; }
+@keyframes scan { 0% { top: 0% } 100% { top: 100% } }
+.scanline { animation: scan 2.2s ease-in-out infinite alternate; }
+
+/* let grid/flex children shrink so wide charts and tables never force horizontal page scroll */
+.grid > * { min-width: 0; }
+body { overflow-x: hidden; }
+h1 { overflow-wrap: anywhere; }

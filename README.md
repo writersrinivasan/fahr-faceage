@@ -17,6 +17,7 @@ It combines two tracks in one app:
   - **Cohort simulator**: synthetic cohort, Kaplan–Meier curves and C-index for real age vs FaceAge.
   - **Clinician challenge**: predict 6-month survival before and after seeing FaceAge.
   - **Bias & confounder explorer**: photo artefacts, treatment effects and training-data fairness.
+- **🤖 FAHR Guide AI assistant** (`/assistant` plus a floating button on every page): a bring-your-own-key (BYOK) tutor powered by Groq. Visitors paste their own free key from console.groq.com/keys. It is grounded in both papers and knows which module or lab the visitor is on.
 - **🎯 Quiz** (`/quiz`) and **🔗 References + glossary** (`/references`).
 
 ## Run
@@ -29,6 +30,13 @@ npm run build && npm start
 ```
 
 The face scanner downloads its library and model weights (~7 MB) from cdn.jsdelivr.net at runtime, so it needs internet. Images are processed locally and never uploaded.
+
+## AI assistant (BYOK)
+
+- Each visitor brings their own Groq API key. It is kept in their browser (localStorage, or sessionStorage if "remember" is off).
+- Requests go through the app's route handlers (`/api/chat`, `/api/models`), which forward the key to Groq for that request only. Nothing is stored or logged on the server, and no server-side key is needed.
+- Default model: `llama-3.3-70b-versatile`. The model list is loaded from the visitor's Groq account.
+- Because of these API routes, deploy on a Node-capable host (for example Vercel), not as a static export.
 
 ## Disclaimer
 

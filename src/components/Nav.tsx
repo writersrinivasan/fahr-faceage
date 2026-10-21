@@ -8,6 +8,7 @@ const links = [
   { href: "/learn", label: "📚 Learn" },
   { href: "/lab", label: "🧪 Hands-on Lab" },
   { href: "/quiz", label: "🎯 Quiz" },
+  { href: "/assistant", label: "🤖 Assistant" },
   { href: "/references", label: "🔗 References" },
 ];
 

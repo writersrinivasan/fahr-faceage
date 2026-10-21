@@ -3,6 +3,7 @@ import { Plus_Jakarta_Sans, Space_Grotesk, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Nav from "@/components/Nav";
 import Link from "next/link";
+import AssistantLauncher from "@/components/AssistantLauncher";
 
 const jakarta = Plus_Jakarta_Sans({ variable: "--font-jakarta", subsets: ["latin"] });
 const space = Space_Grotesk({ variable: "--font-space", subsets: ["latin"] });
@@ -21,6 +22,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="min-h-full flex flex-col bg-mesh">
         <Nav />
         <main className="flex-1">{children}</main>
+        <AssistantLauncher />
         <footer className="mt-16 border-t border-line bg-white/60 backdrop-blur">
           <div className="mx-auto max-w-6xl px-4 py-8 text-sm text-muted grid gap-4 md:grid-cols-[2fr_1fr]">
             <p>
@@ -33,6 +35,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
               <Link href="/learn" className="hover:text-violet-700">Learn</Link>
               <Link href="/lab" className="hover:text-violet-700">Lab</Link>
               <Link href="/quiz" className="hover:text-violet-700">Quiz</Link>
+              <Link href="/assistant" className="hover:text-violet-700">Assistant</Link>
               <Link href="/references" className="hover:text-violet-700">References</Link>
             </div>
           </div>

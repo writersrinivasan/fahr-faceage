@@ -1,8 +1,15 @@
 import PageHeader from "@/components/PageHeader";
 
 const refs = [
-  { t: "Bontempi D, Zalay O, Bitterman DS, et al. FaceAge, a deep learning system to estimate biological age from face photographs to improve prognostication: a model development and validation study. Lancet Digit Health 2025.", u: "https://doi.org/10.1016/j.landig.2025.03.002", tag: "Primary paper" },
-  { t: "PubMed record of the Lancet Digital Health paper", u: "https://pubmed.ncbi.nlm.nih.gov/40345937/", tag: "Primary paper" },
+  { t: "Haugg F, Lee G, He J, et al., Aerts HJWL, Mak RH. Foundation artificial intelligence models for health recognition by use of face photographs (FAHR-Face): a model development and validation study. Lancet Digit Health 2026.", u: "https://www.thelancet.com/journals/landig/article/PIIS2589-7500(26)00079-8/fulltext", tag: "Primary paper · 2026" },
+  { t: "FAHR-Face preprint (arXiv 2506.14909, June 2025)", u: "https://arxiv.org/abs/2506.14909", tag: "Primary paper · 2026" },
+  { t: "AIM-Harvard/FAHR-Face: open-source code (Apache 2.0)", u: "https://github.com/AIM-Harvard/FAHR-Face", tag: "Code" },
+  { t: "FAHR-Face and FAHR-FaceAge model weights on Hugging Face (CC BY-NC-SA 4.0)", u: "https://huggingface.co/fridolin22/FAHR-Face", tag: "Code" },
+  { t: "Mass General Brigham press release: AI facial health recognition tools help physicians assess age and survival risk (Oct 2026)", u: "https://news.massgeneralbrigham.org/en/ai-facial-recognition-tools-assess-age-cancer-survival-risk", tag: "News" },
+  { t: "ASCO Post: AI model based on facial image analysis estimates biological age and mortality risk in patients with cancer (Oct 2026)", u: "https://ascopost.com/news/october-2026/ai-model-based-on-facial-image-analysis-estimates-biological-age-and-mortality-risk-in-patients-with-cancer/", tag: "News" },
+  { t: "FaceAge Research Study: IRB-approved public study where anyone can upload a photo", u: "https://faceage.bwh.harvard.edu", tag: "Project" },
+  { t: "Bontempi D, Zalay O, Bitterman DS, et al. FaceAge, a deep learning system to estimate biological age from face photographs to improve prognostication: a model development and validation study. Lancet Digit Health 2025.", u: "https://doi.org/10.1016/j.landig.2025.03.002", tag: "Primary paper · 2025" },
+  { t: "PubMed record of the Lancet Digital Health paper (2025)", u: "https://pubmed.ncbi.nlm.nih.gov/40345937/", tag: "Primary paper · 2025" },
   { t: "AIM-Harvard/FaceAge: open-source code, documentation and model weights", u: "https://github.com/AIM-Harvard/FaceAge", tag: "Code" },
   { t: "AIM Program project page: FaceAge", u: "https://aim.mgh.harvard.edu/faceage", tag: "Project" },
   { t: "Mass General Brigham press release: AI tool uses face photos to estimate biological age and predict cancer outcomes (May 2025)", u: "https://www.massgeneralbrigham.org/en/about/newsroom/press-releases/ai-face-photos-tool-estimate-age-predict-cancer-outcomes", tag: "News" },
@@ -16,6 +23,11 @@ const refs = [
 const glossary = [
   ["Biological age", "An estimate of how aged the body is, based on biological markers rather than birth date."],
   ["Age gap", "FaceAge minus chronological age. Positive means the face looks older."],
+  ["FAHR", "Foundation Artificial intelligence models for Health Recognition: the 2026 family FAHR-Face, FAHR-FaceAge and FAHR-FaceSurvival."],
+  ["Foundation model", "A model pretrained on huge unlabelled data, then fine-tuned for many specific tasks."],
+  ["Masked autoencoder", "Self-supervised training that hides most image patches and learns to reconstruct them."],
+  ["Vision Transformer (ViT)", "A network that splits an image into patches and processes them as tokens."],
+  ["Quartile", "One of four equal groups after sorting patients by a score."],
   ["CNN", "Convolutional neural network: a model that learns visual patterns from pixels."],
   ["MTCNN", "Multi-Task Cascaded CNN: three-stage face detector (P-Net, R-Net, O-Net)."],
   ["Embedding", "A compact list of numbers (128 for FaceNet) summarising a face."],

@@ -108,7 +108,7 @@ export default function FaceScanPage() {
     <LabShell emoji="📸" title="Live face age scanner" learn={{ href: "/learn/what-is-faceage", label: "What is FaceAge?" }}
       intro={<>Run a real face-detection and age-estimation network in your browser. It follows the same idea as FaceAge: detect the face, crop it, run a CNN, output an age, then compute the age gap.</>}>
       <div className="mb-5 rounded-2xl border border-amber-300 bg-amber-50 p-4 text-sm text-amber-950">
-        ⚠️ <strong>This is not the clinical FaceAge model.</strong> It uses the open-source face-api.js age network, trained on general web photos to estimate <em>apparent</em> age. Results are for learning only and say nothing about your health. 🔒 Your image never leaves your device.
+        ⚠️ <strong>This is not the clinical FaceAge model.</strong> It uses the open-source face-api.js age network, trained on general web photos to estimate <em>apparent</em> age. The research FAHR-FaceAge weights are public on Hugging Face but run in Python, not in the browser. Results are for learning only and say nothing about your health. 🔒 Your image never leaves your device.
       </div>
       <div className="grid gap-6 lg:grid-cols-[1.4fr_1fr]">
         <div className="card p-5">

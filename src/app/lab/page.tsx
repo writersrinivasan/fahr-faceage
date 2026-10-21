@@ -6,7 +6,7 @@ export default function LabHub() {
   return (
     <div>
       <PageHeader kicker="Track 2 · Hands-on lab" title="Learn by doing">
-        Six interactive experiments turn the theory into something you can touch. Each one maps to a learning module, so
+        Seven interactive experiments turn the theory into something you can touch. Each one maps to a learning module, so
         you can switch between reading and practising at any time.
       </PageHeader>
       <div className="mx-auto max-w-6xl px-4">

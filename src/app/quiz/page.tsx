@@ -16,6 +16,11 @@ const Q = [
   { q: "Which group had notably worse survival in the study?", o: ["FaceAge under 50", "FaceAge over 85", "Women only", "Never-smokers"], a: 1, e: "Patients with FaceAge above 85 had markedly worse survival." },
   { q: "Which is a photo artefact rather than biology?", o: ["Cachexia weight loss", "Long-term smoking", "Soft studio lighting", "Cellular senescence"], a: 2, e: "Lighting changes the pixels without changing biology." },
   { q: "Which use of FaceAge is ethically inappropriate?", o: ["Supporting palliative care planning", "Stratifying trial participants", "Setting life-insurance premiums", "Monitoring decline during treatment"], a: 2, e: "The authors warned against misuse such as insurance decisions." },
+  { q: "What does FAHR stand for in FAHR-Face?", o: ["Facial Age Hazard Ratio", "Foundation AI models for Health Recognition", "Face Analysis for Human Risk", "Fast Automated Health Readout"], a: 1, e: "FAHR = Foundation Artificial intelligence models for Health Recognition (Haugg et al., 2026)." },
+  { q: "How was FAHR-Face pretrained?", o: ["Supervised on cancer outcomes", "Masked autoencoder on 40M+ unlabelled faces", "On 6,196 radiotherapy photos", "With identity labels from FaceNet"], a: 1, e: "A Vision Transformer learned to reconstruct 75% hidden patches across 40M+ WebFace42M images, with no labels." },
+  { q: "What does FAHR-FaceSurvival's HR of 3.23 compare?", o: ["Per decade of FaceAge", "Smokers vs non-smokers", "Highest vs lowest risk quartile", "Men vs women"], a: 2, e: "Patients in the top risk quartile had about 3.2× the adjusted hazard of death of the bottom quartile (p < 0.0001)." },
+  { q: "How did FAHR-FaceAge and FAHR-FaceSurvival relate to each other?", o: ["Almost identical predictions", "Weakly correlated and complementary", "FaceSurvival replaced FaceAge", "Only FaceAge predicted survival"], a: 1, e: "They were weakly correlated, both independently prognostic, and combining them improved accuracy." },
+  { q: "Which facial regions did FAHR-FaceSurvival rely on most?", o: ["Hairline and ears", "Below the eyes and nasal bridge", "Chin and jaw", "Lips"], a: 1, e: "FaceSurvival: below the eyes and nasal bridge. FaceAge: nasolabial folds, forehead above the orbits and temples." },
 ];
 
 export default function QuizPage() {
@@ -24,7 +29,7 @@ export default function QuizPage() {
   const done = Object.keys(ans).length === Q.length;
   return (
     <div>
-      <PageHeader kicker="Check your understanding" title="FaceAge quiz">Twelve questions covering the whole learning path. Each answer shows an explanation.</PageHeader>
+      <PageHeader kicker="Check your understanding" title="FaceAge quiz">Seventeen questions covering the whole learning path. Each answer shows an explanation.</PageHeader>
       <div className="mx-auto max-w-3xl space-y-4 px-4">
         <div className="sticky top-16 z-10 card flex items-center justify-between p-4">
           <span className="font-semibold">Score: {score} / {Q.length}</span>

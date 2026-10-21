@@ -1,3 +1,5 @@
+import { fahrModules } from "./fahrModules";
+
 export type Block =
   | { type: "h"; text: string }
   | { type: "p"; text: string }
@@ -20,7 +22,7 @@ export type Module = {
   takeaways: string[];
 };
 
-export const modules: Module[] = [
+const baseModules: Module[] = [
   {
     slug: "biological-age",
     n: 1,
@@ -97,6 +99,7 @@ export const modules: Module[] = [
         "**Biologically meaningful**: it was linked to a cell-ageing (senescence) gene, while chronological age was not.",
         "**Open science**: code and weights are public, so other groups can test it.",
       ]},
+      { type: "callout", tone: "key", title: "Two generations of the same idea", text: "This module covers the original **FaceAge** (2025). In October 2026 the team published its successor, **FAHR-Face** (Foundation AI models for Health Recognition), in the same journal. It adds a more accurate **FAHR-FaceAge** and a new **FAHR-FaceSurvival** model that predicts survival directly. Modules 5 and 6 cover it in depth." },
       { type: "callout", tone: "info", title: "Quote from the team", text: "\"How old someone looks compared to their chronological age really matters.\" (Hugo Aerts, PhD, director of the AIM Program, Mass General Brigham press release, May 2025)." },
     ],
     takeaways: [
@@ -143,6 +146,7 @@ export const modules: Module[] = [
       { type: "callout", tone: "key", title: "Why train on *healthy* people?", text: "The model learns the normal relationship between appearance and age. When it is applied to a patient with cancer, any systematic 'extra' age it sees reflects something the healthy population did not have, such as disease burden, frailty or accelerated ageing. That deviation is the signal." },
       { type: "h", text: "What does the network actually look at?" },
       { type: "p", text: "Researchers can use saliency (attention) maps to see which pixels most influence a CNN. For face-age models these typically highlight areas a human would expect: around the eyes, forehead, nasolabial folds, mouth and skin texture. For FaceAge specifically, the authors acknowledge that the exact cues it relies on are not fully understood. Like most deep networks, FaceAge is partly a **black box**, which is one reason prospective validation matters." },
+      { type: "callout", tone: "info", title: "What changed in 2026", text: "This is the **original FaceAge** pipeline. The 2026 **FAHR-Face** family replaces MTCNN with RetinaFace, the CNN with a **Vision Transformer**, and supervised pretraining with a **masked autoencoder** trained on 40M+ unlabelled faces. See the module on FAHR-Face." },
       { type: "callout", tone: "tip", title: "Good practice for any face-age model", text: "Check robustness: run several photos of the same person, vary lighting and pose, and confirm the estimate stays stable. Large swings point to photo artefacts rather than biology. You can try this yourself in the Lab's face scanner." },
     ],
     takeaways: [
@@ -246,6 +250,8 @@ export const modules: Module[] = [
       { type: "p", text: "**Gap = FaceAge − chronological age.** Positive means 'looks older'. Because of model error, small gaps (±4 years) are within noise. Large, consistent gaps are more meaningful." },
       { type: "h", text: "Hazard ratio (HR)" },
       { type: "p", text: "The hazard is the instantaneous risk of the event (here, death) at any moment. An HR compares two groups. HR = 1 means equal risk. HR = 1.15 means 15% higher risk. FaceAge HRs are reported **per decade**, so for a gap of g years the relative hazard is roughly **HR^(g/10)**. With HR 1.151, a 20-year gap gives 1.151² ≈ 1.32, about 32% higher risk." },
+      { type: "h", text: "Quartile hazard ratio" },
+      { type: "p", text: "FAHR-FaceSurvival results are reported by **quartile**: patients are ranked by risk score and split into four equal groups. HR 3.23 for the top versus bottom quartile means the highest-risk quarter had about 3.2 times the instantaneous risk of death of the lowest-risk quarter, after adjustment. This is not a per-unit or per-decade figure." },
       { type: "h", text: "Kaplan–Meier (KM) curves" },
       { type: "p", text: "A KM curve shows the fraction of patients still alive over time. Each drop is a death; patients lost to follow-up are 'censored'. When the FaceAge > 85 curve sits below the others, those patients die sooner on average." },
       { type: "h", text: "AUC (area under the ROC curve)" },
@@ -274,10 +280,12 @@ export const modules: Module[] = [
       { type: "list", items: [
         "**Training data bias**: IMDb-WIKI is mostly celebrities, who often use make-up, professional lighting and cosmetic procedures, and is skewed toward lighter-skinned, Western faces.",
         "**Label noise**: ages in web datasets are inferred from dates and can be wrong.",
-        "**Photo conditions**: extreme lighting, blur, angles, glasses, hats or facial hair may shift estimates.",
+        "**Photo conditions**: extreme lighting, blur, angles, glasses, hats or facial hair may shift estimates. The 2026 FAHR-FaceAge was reported to be robust to pose, lighting, expression and make-up, but very poor photos remain a risk.",
         "**Disease-specific appearance**: steroid-related facial swelling, radiation skin changes or cachexia can push FaceAge up or down for reasons unrelated to general ageing.",
         "**Explainability**: the exact visual cues are not fully known.",
         "**Retrospective evidence**: results come from historical data at a few centres, not prospective trials.",
+        "**Partly closed models**: FAHR-FaceSurvival weights are not public, so other groups cannot yet verify it independently.",
+        "**Plastic surgery**: FAHR-FaceAge showed a small shift after rhinoplasty, so some procedures can still change the estimate.",
       ]},
       { type: "h", text: "Ethical risks" },
       { type: "list", items: [
@@ -310,7 +318,8 @@ export const modules: Module[] = [
         { title: "Prospective trials", text: "Test FaceAge in real time at the point of care and measure whether it improves decisions and patient outcomes." },
         { title: "Diverse validation", text: "Evaluate across ethnicities, countries, age groups, devices and photo conditions." },
         { title: "Multimodal models", text: "Combine FaceAge with labs, imaging, genomics and performance status for stronger prediction." },
-        { title: "Next-generation facial health AI", text: "Mass General Brigham has filed provisional patents on next-generation facial health algorithms, for example estimating risk directly rather than age." },
+        { title: "Next-generation facial health AI (now published)", text: "The 2026 FAHR-Face foundation model delivered this step: FAHR-FaceSurvival estimates risk directly rather than age. The same backbone can be fine-tuned for new facial health biomarkers." },
+        { title: "Public research participation", text: "The IRB-approved FaceAge Research Study (faceage.bwh.harvard.edu) lets anyone contribute a photo, which helps validate the tools in broader populations." },
         { title: "Regulation and deployment", text: "Clinical use would require regulatory clearance, monitoring for drift and clear governance on image data." },
       ]},
       { type: "callout", tone: "info", title: "The big picture", text: "FaceAge shows that a routine, almost-free photograph contains medically useful biological information. Whether it becomes a standard oncology tool depends on rigorous, fair and ethical validation over the coming years." },
@@ -321,5 +330,13 @@ export const modules: Module[] = [
     ],
   },
 ];
+
+// Insert the FAHR-Face (2026) modules right after the 2025 oncology evidence, then number everything in order.
+const evidenceIdx = baseModules.findIndex((m) => m.slug === "oncology-evidence");
+export const modules: Module[] = [
+  ...baseModules.slice(0, evidenceIdx + 1),
+  ...fahrModules,
+  ...baseModules.slice(evidenceIdx + 1),
+].map((m, i) => ({ ...m, n: i + 1 }));
 
 export const getModule = (slug: string) => modules.find((m) => m.slug === slug);

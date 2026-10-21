@@ -10,8 +10,9 @@ const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"]
 
 export const metadata: Metadata = {
   title: "FAHR · FaceAge Learning Lab",
+  // FAHR = Foundation AI models for Health Recognition (Haugg et al., Lancet Digital Health 2026)
   description:
-    "Learn how FaceAge estimates biological age from a face photo and how oncology researchers use it for prognosis, then try it hands-on.",
+    "Learn how FAHR-Face and FaceAge estimate biological age and cancer survival risk from a face photo, then try it hands-on.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
@@ -24,8 +25,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           <div className="mx-auto max-w-6xl px-4 py-8 text-sm text-muted grid gap-4 md:grid-cols-[2fr_1fr]">
             <p>
               <strong className="text-foreground">Educational use only.</strong> This app explains published research
-              (Bontempi et al., <em>The Lancet Digital Health</em>, 2025). The hands-on tools use simulated data and a
-              generic open-source age estimator, not the clinical FaceAge model. Nothing here is medical advice.
+              on FaceAge (Bontempi et al., <em>The Lancet Digital Health</em>, 2025) and FAHR-Face (Haugg et al., <em>The Lancet
+              Digital Health</em>, 2026). The hands-on tools use simulated data and a generic open-source age estimator, not the
+              clinical models. Nothing here is medical advice.
             </p>
             <div className="flex gap-4 md:justify-end">
               <Link href="/learn" className="hover:text-violet-700">Learn</Link>

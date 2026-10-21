@@ -3,10 +3,15 @@ import { modules } from "@/lib/modules";
 import { labs } from "@/lib/labs";
 
 const stats = [
-  { v: "58,851", l: "healthy faces trained on", c: "from-violet-500 to-fuchsia-500" },
-  { v: "6,196", l: "cancer patients validated", c: "from-rose-500 to-orange-400" },
-  { v: "+4.79 y", l: "cancer patients look older", c: "from-sky-500 to-cyan-400" },
-  { v: "0.74→0.80", l: "clinician AUC with FaceAge", c: "from-emerald-500 to-lime-400" },
+  { v: "40M+", l: "faces pretrained FAHR-Face (2026)", c: "from-violet-500 to-fuchsia-500" },
+  { v: "5.1 y", l: "FAHR-FaceAge mean absolute error", c: "from-rose-500 to-orange-400" },
+  { v: "HR 3.23", l: "FAHR-FaceSurvival top vs bottom risk quartile", c: "from-sky-500 to-cyan-400" },
+  { v: "+4.79 y", l: "cancer patients look older (FaceAge 2025)", c: "from-emerald-500 to-lime-400" },
+];
+
+const timeline = [
+  { year: "May 2025", name: "FaceAge", cite: "Bontempi et al., Lancet Digital Health", pts: ["CNN (FaceNet) trained on 58,851 healthy faces", "6,196 cancer patients: looking older predicts shorter survival", "Clinician 6-month survival AUC 0.74 → 0.80 with FaceAge"], c: "from-rose-500 to-orange-400", href: "/learn/oncology-evidence" },
+  { year: "Oct 2026", name: "FAHR-Face", cite: "Haugg et al., Lancet Digital Health", pts: ["Vision Transformer foundation model pretrained on 40M+ faces", "FAHR-FaceAge: MAE 5.1 y, beats original FaceAge for prognosis", "FAHR-FaceSurvival: survival from a photo, Q4 vs Q1 HR 3.23"], c: "from-fuchsia-600 to-indigo-600", href: "/learn/fahr-face-foundation" },
 ];
 
 const flow = [
@@ -30,9 +35,9 @@ export default function Home() {
             Your face tells a <span className="text-gradient">biological story</span>.
           </h1>
           <p className="mt-5 max-w-xl text-lg text-muted">
-            FaceAge is a deep-learning system that estimates biological age from a single photo. Cancer researchers found
-            that patients who <em>look older</em> than their real age tend to have shorter survival. Learn how it works,
-            then try it yourself.
+            <strong>FAHR</strong> (Foundation AI models for Health Recognition) and its predecessor <strong>FaceAge</strong> read
+            biological age and survival risk from a single photo. Cancer researchers found that patients who <em>look older</em>
+            than their real age tend to have shorter survival. Learn how it works, then try it yourself.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <Link href="/learn" className="rounded-full bg-gradient-to-r from-violet-600 to-fuchsia-600 px-6 py-3 font-semibold text-white shadow-lg shadow-fuchsia-500/25 transition hover:scale-[1.03]">
@@ -54,6 +59,25 @@ export default function Home() {
             <div className="text-sm opacity-95">{s.l}</div>
           </div>
         ))}
+      </section>
+
+      {/* Two generations */}
+      <section className="mx-auto max-w-6xl px-4 pt-14">
+        <h2 className="font-display text-3xl font-bold">Two generations of research</h2>
+        <p className="mt-1 text-muted">Both papers come from the Mass General Brigham AI in Medicine (AIM) Program and are the main sources for this app.</p>
+        <div className="mt-6 grid gap-5 md:grid-cols-2">
+          {timeline.map((t) => (
+            <Link key={t.name} href={t.href} className="card group overflow-hidden transition hover:-translate-y-1 hover:shadow-xl">
+              <div className={`bg-gradient-to-r ${t.c} p-5 text-white`}>
+                <div className="text-sm font-semibold opacity-90">{t.year} · {t.cite}</div>
+                <div className="font-display text-2xl font-bold">{t.name}</div>
+              </div>
+              <ul className="space-y-2 p-5 text-sm">
+                {t.pts.map((p) => <li key={p} className="flex gap-2"><span className="text-fuchsia-500">◆</span>{p}</li>)}
+              </ul>
+            </Link>
+          ))}
+        </div>
       </section>
 
       {/* Flow */}
